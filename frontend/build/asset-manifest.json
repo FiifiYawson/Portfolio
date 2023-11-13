@@ -1,0 +1,43 @@
+{
+  "files": {
+    "main.css": "/static/css/main.0933470c.css",
+    "main.js": "/static/js/main.21bb4f5c.js",
+    "static/js/787.9e9f4ffd.chunk.js": "/static/js/787.9e9f4ffd.chunk.js",
+    "static/media/BalooDa2-VariableFont_wght.ttf": "/static/media/BalooDa2-VariableFont_wght.83c341aa61fd362c27e0.ttf",
+    "static/media/cv.pdf": "/static/media/cv.95390bc040db8d549841.pdf",
+    "static/media/weather 3.png": "/static/media/weather 3.b9ba1a566ec23c3e0ace.png",
+    "static/media/weather app.png": "/static/media/weather app.ab2ebbe00c08663babb0.png",
+    "static/media/weather 2.png": "/static/media/weather 2.ac60aa68c4848708cca8.png",
+    "static/media/chat3.png": "/static/media/chat3.3945adb0fed75c5e0771.png",
+    "static/media/hello chat.png": "/static/media/hello chat.d5c2e049d6f679585a2d.png",
+    "static/media/chat2.png": "/static/media/chat2.384f81a7dbf54e96de4d.png",
+    "static/media/YawsonDev_Logo.svg": "/static/media/YawsonDev_Logo.5a0bfba83720299bb5039c860d586c1c.svg",
+    "static/media/MongoDB Logo.svg": "/static/media/MongoDB Logo.5a1fe66951fae6d0024fbe5739c75753.svg",
+    "static/media/Material UI.svg": "/static/media/Material UI.c6e0bd4e0179cf7364408740f1f75da1.svg",
+    "static/media/frontend.svg": "/static/media/frontend.4d8670b37d2183e5d4e3dcac18043607.svg",
+    "static/media/Node Js  Logo.svg": "/static/media/Node Js  Logo.fac75a30c5e90f44cfc9c72035aa4598.svg",
+    "static/media/Tailwind CSS.svg": "/static/media/Tailwind CSS.325c174d20623e5ff2b39081030684f1.svg",
+    "static/media/Express Logo.svg": "/static/media/Express Logo.d23a3fd18fb7928cc63c3f29608f40ef.svg",
+    "static/media/backend.svg": "/static/media/backend.537941f4c13505eaa1ef123d5dd49605.svg",
+    "static/media/React Logo.svg": "/static/media/React Logo.fdcafe755350e23f8a25b64d1f371c1c.svg",
+    "static/media/world.svg": "/static/media/world.d56141c2e72b59184c5e360b573fe137.svg",
+    "static/media/github.svg": "/static/media/github.fc5a9d4ff9499f2e7267b93eb425d37a.svg",
+    "static/media/Js Logo.svg": "/static/media/Js Logo.15123833d1f95039e0c3e82e0cc3b405.svg",
+    "static/media/sql.svg": "/static/media/sql.f2904b61742f0fb153b33f9e1679d439.svg",
+    "static/media/location.svg": "/static/media/location.0e033312d17bb035102b8384dc9be130.svg",
+    "static/media/d3.svg": "/static/media/d3.7812e30ff99624d46ddcb5bbf3fc0f9d.svg",
+    "static/media/CSS Logo.svg": "/static/media/CSS Logo.2d319b517ea16a9ec89cb094c8afe817.svg",
+    "static/media/HTML Logo.svg": "/static/media/HTML Logo.ae0528647a93452428bfb8d0c07bd9c6.svg",
+    "index.html": "/index.html",
+    "static/media/Polygon 1.svg": "/static/media/Polygon 1.f59d4b0104c9795a74dd2ac551eeb575.svg",
+    "static/media/Polygon 3.svg": "/static/media/Polygon 3.5f61d082ac5962c93adddcc288a7608f.svg",
+    "static/media/Polygon 2.svg": "/static/media/Polygon 2.09316987fe2e6bc0e6f028825d22e101.svg",
+    "main.0933470c.css.map": "/static/css/main.0933470c.css.map",
+    "main.21bb4f5c.js.map": "/static/js/main.21bb4f5c.js.map",
+    "787.9e9f4ffd.chunk.js.map": "/static/js/787.9e9f4ffd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0933470c.css",
+    "static/js/main.21bb4f5c.js"
+  ]
+}

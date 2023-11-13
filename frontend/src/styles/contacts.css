@@ -1,0 +1,11 @@
+.contacts{
+    background-color: transparent;
+}
+
+.socials{
+    fill: #555;
+}
+
+.social-container:hover .socials{
+    fill: #000
+}

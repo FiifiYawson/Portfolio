@@ -1,0 +1,14 @@
+:root{
+  --background: #00000a ;
+  --primary-color: #00B0FC;
+  --secondary-color: #013769;
+  --main-text-color: #FFFFFF;
+  --secondary-text-color: #9C9C9C;
+  --secondary-blue-text-color: #B2CCE4;
+  --semantic-background: #D9D9D9;
+  --footer-gradient: linear-gradient(180deg, transparent, #002133);
+  --nav-background-gradient: linear-gradient(180deg, #002133 0%, rgba(0, 0, 0, 0));
+  --nav-shadow: 0px 6px 35px -13px rgba(0, 0, 0, 0.25);
+  --nav-color: rgba(2, 32, 48, 0.80);
+  --app-padding: 5%;
+}
