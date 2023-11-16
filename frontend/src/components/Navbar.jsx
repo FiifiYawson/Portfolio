@@ -3,7 +3,6 @@ import yawsonDevLogo from "../images/YawsonDev_Logo.svg"
 import Stack from "@mui/material/Stack"
 import { gsap } from "gsap"
 import { useEffect, useRef, useCallback } from "react"
-import cv from "../assets/cv.pdf"
 
 
 function Navbar() {
@@ -31,7 +30,7 @@ function Navbar() {
       flex justify-between px-[5%] pt-[30px] items-start'>
         <img ref={logo} className="-translate-x-5" src={yawsonDevLogo} width="180" alt=""/>
         <Stack ref={nav} direction="row" alignItems="center" gap={3} className="h-[70px] rounded-[20px] shadow-[var(--nav-shadow)] bg-nav-color px-[17px] backdrop:blur-lg">
-          <a href={cv} className="text-white text-[22px] font-extrabold hover:text-primary-color">Check Resume</a>
+          <a href="/Fiifi Yawson - Resume.pdf" className="text-white text-[22px] font-extrabold hover:text-primary-color">View Resume</a>
         </Stack>
       </div>
     </div>

@@ -5,7 +5,6 @@ import Contacts from "./Contacts"
 import "../styles/footer.css"
 import logo from "../images/YawsonDev_Logo.svg"
 import location from "../images/location.svg"
-import cv from "../assets/cv.pdf"
 
 function Footer() {
   return (
@@ -20,7 +19,7 @@ function Footer() {
             <Typography variant="h6" color="white">Accra - Cantonments</Typography>
           </Box>
         </Stack>
-        <a href={cv} className="text-white block underline text-[17px] ml-[40px]">Check Resume</a>
+        <a href="/Fiifi Yawson - Resume.pdf" className="text-white block underline text-[17px] ml-[40px]">Check Resume</a>
       </Stack>
     </Stack>
   )
