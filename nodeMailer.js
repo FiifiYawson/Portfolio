@@ -1,10 +1,44 @@
 const nodeMailer = require("nodemailer")
+const {google} = require("googleapis")
 
-const transport = nodeMailer.createTransport({
-    service: "gmail",
-    auth: {
+const {
+    GOOGLE_CLIENT_ID, 
+    GOOGLE_CLIENT_SECRET, 
+    GOOGLE_REFRESH_TOKEN, 
+    MESSAGE_RECIEVER_EMAIL_ADDRESS
+} = process.env
 
+const authClient = new google.auth.OAuth2(GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET)
+
+authClient.setCredentials({refresh_token: GOOGLE_REFRESH_TOKEN})
+
+async function sendMail(senderName, senderContacts, subject, message){
+    try {
+        const transport = nodeMailer.createTransport({
+            service: "gmail",
+            auth: {
+                type: "OAUTH2",
+                user: "ghyawson@gmail.com",
+                clientId: GOOGLE_CLIENT_ID,
+                clientSecret: GOOGLE_CLIENT_SECRET,
+                refreshToken: GOOGLE_REFRESH_TOKEN,
+                accessToken: await authClient.getAccessToken(),
+            },
+        })
+                
+        transport.sendMail({
+            from: `${senderName || ""} <some@gmail.com>`,
+            to: MESSAGE_RECIEVER_EMAIL_ADDRESS,
+            subject: `${senderName || ""} ${subject ? `- ${subject}` : ""}`,
+            text: `
+                message from: ${senderName || ""} ${senderContacts.lenght !== 0 ? `< ${senderContacts.join(" / ")} >` : ""}
+
+                ${message}
+            `,
+        })
+    } catch (error) {
+        console.log(error)
     }
-})
+}
 
-module.exports = transport
+module.exports = {sendMail}
