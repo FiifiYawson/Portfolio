@@ -14,7 +14,7 @@ app.post("/message", (req, res) => {
     //     message: "name or at least one contact must be provided",
     // })
 
-    if(!message) return res.status(400).json({
+    if(!message || message === "") return res.status(400).json({
         message: "a message must be provided"
     })
 

@@ -49,19 +49,6 @@ const theme = createTheme({
 })
 
 function App() {
-  fetch("/message", {
-    method: "POST",
-    headers: {
-      "Content-Type" : "application/json"
-    },
-    body: JSON.stringify({
-      senderName: "Akosua",
-      senderContacts: ["akos@gmail.com", "0260824880"],
-      subject: "Good work done",
-      message: "hello Fiifi"
-    })
-  })
-
   return (
     <ThemeProvider theme={theme}>
       <Router>

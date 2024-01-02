@@ -31,7 +31,9 @@ async function sendMail(senderName, senderContacts, subject, message){
             to: MESSAGE_RECIEVER_EMAIL_ADDRESS,
             subject: `${senderName || ""} ${subject ? `- ${subject}` : ""}`,
             text: `
-                message from: ${senderName || ""} ${senderContacts.lenght !== 0 ? `< ${senderContacts.join(" / ")} >` : ""}
+                ${(senderContacts || senderName) ?
+                    `message from: ${senderName || ""} ${(senderContacts && senderContacts.lenght !== 0) ? `< ${senderContacts?.join(" / ")} >` : ""}` : "(anonymous)"
+                }
 
                 ${message}
             `,
