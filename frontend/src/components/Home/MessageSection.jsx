@@ -1,4 +1,7 @@
-import {useRef, useState} from 'react'
+import { useState } from 'react'
+import TextField from "@mui/material/TextField"
+import Button from '@mui/material/Button'
+import Typography from '@mui/material/Typography'
 
 function MessageSection() {
     const [formState, setFormState] = useState({
@@ -16,13 +19,11 @@ function MessageSection() {
 
         let valid = true
 
-        if(
+        if (
             messageValue === "" ||
             !messageValue
         ) {
             valid = false
-
-            console.log(messageValue, formState.message.value)
 
             newState.message = {
                 ...formState.message,
@@ -30,8 +31,6 @@ function MessageSection() {
                 errorMessage: "message is required"
             }
         }
-
-        console.log(valid)
 
         setFormState((state) => ({
             ...state,
@@ -44,17 +43,17 @@ function MessageSection() {
     const handleSendMessage = (e) => {
         e.preventDefault()
 
-        if(!handleFormVerification()) return
+        if (!handleFormVerification()) return
 
         fetch("/message", {
             method: "POST",
             headers: {
-                "Content-Type" : "application/json"
+                "Content-Type": "application/json"
             },
             body: JSON.stringify({
                 message: formState.message.value
             })
-        })            
+        })
     }
 
     const handleFormFieldOnChange = (e) => setFormState(state => ({
@@ -67,9 +66,42 @@ function MessageSection() {
 
     return (
         <section className="text-white px-app-padding mt-[100px]">
-            <form onSubmit={handleSendMessage}>
-                <input className="text-black" type='text' name="message" value={formState.message.value} onChange={handleFormFieldOnChange} />
-                <input className="text-white" type="submit" />
+            <form className='flex flex-col gap-5' onSubmit={handleSendMessage}>
+                <TextField
+                    variant='filled'
+                    placeholder='send me a message'
+                    label="message"
+                    onInput= {handleFormFieldOnChange}
+                    value={formState.message.value}    
+                    name='message'                
+                    multiline
+                    InputLabelProps={{
+                        sx: {
+                            fontSize: "20px",
+                        }
+                    }}
+                    inputProps={{
+                        sx: {
+                            fontSize: "20px",
+                            lineHeight: "100%",
+                            minHeight: "50px",
+                            color: "white"
+                        }
+                    }}
+                    InputProps={{
+                        sx : {
+                            "&&:hover,&&:focus": {
+                                backgroundColor: "rgba(255, 255, 255, 0.15)",
+                            },
+                            backgroundColor: "rgba(255, 255, 255, 0.15)",
+                        }
+                    }}
+                />
+                <Button
+                    variant='contained'
+                    type="submit"
+                    className='py-3'
+                ><Typography className="text-black" variant='body2'>Send</Typography></Button>
             </form>
         </section>
     )
