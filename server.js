@@ -7,7 +7,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(express.static("./frontend/build"))
 
-app.post("/message", (req, res) => {
+app.post("/message", async (req, res) => {
     const {senderName, senderContacts, subject, message} = req.body
 
     // if(!senderName && !senderContacts?.length === 0) return res.status(400).json({
@@ -18,9 +18,11 @@ app.post("/message", (req, res) => {
         message: "a message must be provided"
     })
 
-    sendMail(senderName, senderContacts, subject, message)
+    const sendRes = await sendMail(senderName, senderContacts, subject, message)
 
-    return res.json(req.body)
+    if(!sendRes) return res.status(500)
+
+    return res.status(200).json(sendRes)
 })
 
 app.listen(5000)

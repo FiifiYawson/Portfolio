@@ -26,7 +26,7 @@ async function sendMail(senderName, senderContacts, subject, message){
             },
         })
                 
-        transport.sendMail({
+        const mailRes = await transport.sendMail({
             from: `${senderName || ""} <some@gmail.com>`,
             to: MESSAGE_RECIEVER_EMAIL_ADDRESS,
             subject: `${senderName || ""} ${subject ? `- ${subject}` : ""}`,
@@ -38,6 +38,9 @@ async function sendMail(senderName, senderContacts, subject, message){
                 ${message}
             `,
         })
+
+        return mailRes || false
+
     } catch (error) {
         console.log(error)
     }

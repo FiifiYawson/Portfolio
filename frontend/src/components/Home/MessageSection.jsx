@@ -2,9 +2,10 @@ import { useState } from 'react'
 import TextField from "@mui/material/TextField"
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
+import { Box } from '@mui/material'
 
 function MessageSection() {
-    const [formState, setFormState] = useState({
+    const [formFieldsState, setFormFieldsState] = useState({
         message: {
             value: "",
             error: false,
@@ -12,8 +13,15 @@ function MessageSection() {
         }
     })
 
+    const [formStatus, setFormStatus] = useState({
+        sending: false,
+        sent: false,
+        error: false,
+        statusMessage: "",
+    })
+
     const handleFormVerification = () => {
-        const messageValue = formState.message.value
+        const messageValue = formFieldsState.message.value
 
         const newState = {}
 
@@ -26,13 +34,13 @@ function MessageSection() {
             valid = false
 
             newState.message = {
-                ...formState.message,
-                error: false,
+                ...formFieldsState.message,
+                error: true,
                 errorMessage: "message is required"
             }
         }
 
-        setFormState((state) => ({
+        setFormFieldsState((state) => ({
             ...state,
             ...newState,
         }))
@@ -40,41 +48,79 @@ function MessageSection() {
         return valid
     }
 
-    const handleSendMessage = (e) => {
+    const handleSendMessage = async (e) => {
         e.preventDefault()
+
+        setFormStatus({
+            ...formStatus,
+            sending: true
+        })
 
         if (!handleFormVerification()) return
 
-        fetch("/message", {
+        const res = await fetch("/message", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                message: formState.message.value
+                message: formFieldsState.message.value
             })
         })
+
+        if(res.status === 200){
+            setFormStatus({
+                ...formStatus,
+                sending: false,
+                sent: true,
+                statusMessage: "Message sent"
+            })
+        }
+
+        setTimeout(()=>{
+            setFormStatus({
+                ...formStatus,
+                sent: false,
+                error: false,
+                statusMessage: ""
+            })
+        }, 6000)
     }
 
-    const handleFormFieldOnChange = (e) => setFormState(state => ({
-        ...state,
-        [e.target.name]: {
-            ...state[e.target.name],
-            value: e.target.value
-        }
-    }))
+    const handleFormFieldOnChange = (e) => {        
+        setFormFieldsState(state => ({
+            ...state,
+            [e.target.name]: {
+                ...state[e.target.name],
+                value: e.target.value,
+                error: false,
+                errorMessage: "",
+            }
+        }))
+    }
+
 
     return (
-        <section className="text-white px-app-padding mt-[100px]">
+        <section className="text-white px-app-padding mt-[150px]">
+            <Box mb="40px">
+                <Typography variant='h2' m="auto" className='w-fit after:block after:rounded-t-[80%] after:rounded-br-[90%] after:h-[20px] after:bg-primary-color after:blur-xl'>Message me</Typography>
+            </Box>
             <form className='flex flex-col gap-5' onSubmit={handleSendMessage}>
                 <TextField
                     variant='filled'
                     placeholder='send me a message'
-                    label="message"
+                    label="message *"
                     onInput= {handleFormFieldOnChange}
-                    value={formState.message.value}    
+                    value={formFieldsState.message.value}    
+                    error={formFieldsState.message.error}
+                    helperText={formFieldsState.message.error && formFieldsState.message.errorMessage}
                     name='message'                
                     multiline
+                    FormHelperTextProps={{
+                        sx: {
+                            fontSize: "12px"
+                        }
+                    }}
                     InputLabelProps={{
                         sx: {
                             fontSize: "20px",
@@ -101,8 +147,11 @@ function MessageSection() {
                     variant='contained'
                     type="submit"
                     className='py-3'
-                ><Typography className="text-black" variant='body2'>Send</Typography></Button>
+                ><Typography className="text-black" variant='body2'>
+                    {formStatus.sending ? "...sending" : "send"}
+                </Typography></Button>
             </form>
+            {formStatus.sent && <Typography variant='subtitle1'>{formStatus.statusMessage}</Typography>}
         </section>
     )
 }
