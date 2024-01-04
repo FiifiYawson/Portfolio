@@ -51,12 +51,12 @@ function MessageSection() {
     const handleSendMessage = async (e) => {
         e.preventDefault()
 
+        if (!handleFormVerification()) return
+
         setFormStatus({
             ...formStatus,
             sending: true
         })
-
-        if (!handleFormVerification()) return
 
         const res = await fetch("/message", {
             method: "POST",
